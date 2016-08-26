@@ -24,3 +24,10 @@ Finally, the generator network relies on ResNet modules as we've found them to t
 
 [Large-scale CelebFaces Attributes (CelebA) Dataset](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html). Download zip file titled `Align&Cropped Images` and extract all images to a subfolder named `dataset`. I.e. `srez/dataset/lotsoffiles.jpg`.
 
+# Training the net
+
+After downloading the dataset (above) you will need Python 3 with Tensorflow, numpy and [moviepy](http://zulko.github.io/moviepy/).
+
+Training the network for the default 20 minute period: `python3 srez_main.py --run train`. The script will periodically output an example batch in PNG format onto the `srez/train` folder, and checkpoint data will be stored in the `srez/checkpoint` folder.
+
+After the network has trained you can also produce an animation showing the evolution of the output by running `python3 srez_main.py --run demo`.
