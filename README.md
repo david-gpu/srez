@@ -31,3 +31,7 @@ After downloading the dataset (above) you will need Python 3 with Tensorflow, nu
 Training the network for the default 20 minute period: `python3 srez_main.py --run train`. The script will periodically output an example batch in PNG format onto the `srez/train` folder, and checkpoint data will be stored in the `srez/checkpoint` folder.
 
 After the network has trained you can also produce an animation showing the evolution of the output by running `python3 srez_main.py --run demo`.
+
+# About the author
+
+[LinkedIn profile of David Garcia](https://ca.linkedin.com/in/david-garcia-70913311).
