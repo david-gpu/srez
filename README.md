@@ -26,7 +26,7 @@ Finally, the generator network relies on ResNet modules as we've found them to t
 
 # Training the net
 
-After downloading the dataset (above) you will need Python 3 with Tensorflow, numpy and [moviepy](http://zulko.github.io/moviepy/).
+After downloading the dataset (above) you will need Python 3 with Tensorflow, numpy, scipy and [moviepy](http://zulko.github.io/moviepy/).
 
 Training the network for the default 20 minute period: `python3 srez_main.py --run train`. The script will periodically output an example batch in PNG format onto the `srez/train` folder, and checkpoint data will be stored in the `srez/checkpoint` folder.
 
