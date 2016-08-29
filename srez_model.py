@@ -337,10 +337,10 @@ def _discriminator_model(sess, features, disc_input):
     model.add_batch_norm()
     model.add_relu()
 
-    # Last layer is linear (softmax will be applied later)
-    model.add_flatten()
-    # TBD: Add dropout?
-    model.add_dense(1, stddev_factor=1.)
+    # Linearly map to real/fake and return average score
+    # (softmax will be applied later)
+    model.add_conv2d(1, mapsize=1, stride=1, stddev_factor=stddev_factor)
+    model.add_mean()
 
     new_vars  = tf.all_variables()
     disc_vars = list(set(new_vars) - set(old_vars))
