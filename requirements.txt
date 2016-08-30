@@ -1,0 +1,5 @@
+moviepy==0.2.2.11
+numpy==1.11.1
+scipy==0.18.0
+six==1.10.0
+tensorflow==0.10.0rc0
