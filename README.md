@@ -20,15 +20,17 @@ The adversarial term of the loss function ensures the generator produces plausib
 
 Finally, the generator network relies on ResNet modules as we've found them to train substantially faster than more old-fashioned architectures. The adversarial network is much simpler as the use of ResNet modules did not provide an advantage during our experimentation.
 
+# Requirements
+
+You will need Python 3 with Tensorflow, numpy, scipy and [moviepy](http://zulko.github.io/moviepy/). See `requirements.txt` for details.
+
 # How to obtain the dataset
 
-[Large-scale CelebFaces Attributes (CelebA) Dataset](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html). Download zip file titled `Align&Cropped Images` and extract all images to a subfolder named `dataset`. I.e. `srez/dataset/lotsoffiles.jpg`.
+After you have the required software above you will also need the `Large-scale CelebFaces Attributes (CelebA) Dataset` in order to train the model. The model expects the `Align&Cropped Images` version. Extract all images to a subfolder named `dataset`. I.e. `srez/dataset/lotsoffiles.jpg`.
 
-# Training the net
+# Training the model
 
-After downloading the dataset (above) you will need Python 3 with Tensorflow, numpy, scipy and [moviepy](http://zulko.github.io/moviepy/).
-
-Training the network for the default 20 minute period: `python3 srez_main.py --run train`. The script will periodically output an example batch in PNG format onto the `srez/train` folder, and checkpoint data will be stored in the `srez/checkpoint` folder.
+Training the network with default settings: `python3 srez_main.py --run train`. The script will periodically output an example batch in PNG format onto the `srez/train` folder, and checkpoint data will be stored in the `srez/checkpoint` folder.
 
 After the network has trained you can also produce an animation showing the evolution of the output by running `python3 srez_main.py --run demo`.
 
