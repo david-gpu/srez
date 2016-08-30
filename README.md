@@ -14,7 +14,7 @@ This particular example was produced after training the network for 3 hours on a
 
 In essence the architecture is a DCGAN where the input to the generator network is the 16x16 image rather than a multinomial gaussian distribution.
 
-In addition to that the loss function of the generator has a term that measures the L1 difference between the 16x16 input and dowscaled version of the image produced by the generator.
+In addition to that the loss function of the generator has a term that measures the L1 difference between the 16x16 input and downscaled version of the image produced by the generator.
 
 The adversarial term of the loss function ensures the generator produces plausible faces, while the L1 term ensures that those faces resemble the low-res input data. We have found that this L1 term greatly accelerates the convergence of the network during the first batches and also appears to prevent the generator from getting stuck in a poor local solution.
 
