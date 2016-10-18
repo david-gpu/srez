@@ -287,6 +287,16 @@ class Model:
         self.outputs.append(out)
         return self
 
+    def add_upscale(self):
+        """Adds a layer that upscales the output by 2x through nearest neighbor interpolation"""
+
+        prev_shape = self.get_output().get_shape()
+        size = [2 * int(s) for s in prev_shape[1:3]]
+        out  = tf.image.resize_nearest_neighbor(self.get_output(), size)
+
+        self.outputs.append(out)
+        return self        
+
     def get_output(self):
         """Returns the output from the topmost layer of the network"""
         return self.outputs[-1]
@@ -364,10 +374,13 @@ def _generator_model(sess, features, labels, channels):
         for j in range(2):
             model.add_residual_block(nunits, mapsize=mapsize)
 
-        # Spatial upscale
+        # Spatial upscale (see http://distill.pub/2016/deconv-checkerboard/)
+        # and transposed convolution
+        model.add_upscale()
+        
         model.add_batch_norm()
         model.add_relu()
-        model.add_conv2d_transpose(nunits, mapsize=mapsize, stride=2, stddev_factor=1.)
+        model.add_conv2d_transpose(nunits, mapsize=mapsize, stride=1, stddev_factor=1.)
 
     # Finalization a la "all convolutional net"
     nunits = res_units[-1]
